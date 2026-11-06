@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Search, Shield, Printer, Calculator, BookOpen, Volume2 } from 'lucide-react';
+import { FileText, Search, Shield, Printer, Calculator, BookOpen, Volume2, FileSpreadsheet } from 'lucide-react';
 import { MUNICIPALITY_INFO } from '../utils/constants';
 
 export type MainTab = 'form' | 'tracking' | 'officer' | 'print';
@@ -10,6 +10,7 @@ interface NavbarProps {
   onOpenCalculator: () => void;
   onOpenGuide: () => void;
   onOpenDrive?: () => void;
+  onOpenSheets?: () => void;
   pendingCount?: number;
 }
 
@@ -19,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenCalculator,
   onOpenGuide,
   onOpenDrive,
+  onOpenSheets,
   pendingCount = 0,
 }) => {
   return (
@@ -138,6 +140,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </svg>
                 </span>
                 <span className="hidden sm:inline">Google Drive</span>
+              </button>
+            )}
+
+            {onOpenSheets && (
+              <button
+                onClick={onOpenSheets}
+                className="p-2 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 rounded-xl transition-colors flex items-center gap-1 text-xs font-semibold border border-emerald-300"
+                title="ดูโค้ดสำหรับเขียนใน Google Sheets (Apps Script)"
+              >
+                <FileSpreadsheet className="w-4 h-4 text-emerald-700" />
+                <span className="hidden sm:inline">โค้ด Google Sheets</span>
               </button>
             )}
 

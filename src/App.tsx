@@ -10,6 +10,7 @@ import { PrintCenter } from './components/PrintCenter';
 import { FeeCalculatorModal } from './components/FeeCalculatorModal';
 import { LawGuideModal } from './components/LawGuideModal';
 import { GoogleDriveModal } from './components/GoogleDriveModal';
+import { GoogleSheetsCodeModal } from './components/GoogleSheetsCodeModal';
 import { CheckCircle2, Printer, ArrowRight, ShieldCheck, Phone, MapPin, Clock } from 'lucide-react';
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isDriveOpen, setIsDriveOpen] = useState(false);
+  const [isSheetsOpen, setIsSheetsOpen] = useState(false);
   
   // Success banner after submission
   const [submittedApp, setSubmittedApp] = useState<SoundPermitApplication | null>(null);
@@ -69,6 +71,7 @@ export default function App() {
         onOpenCalculator={() => setIsCalculatorOpen(true)}
         onOpenGuide={() => setIsGuideOpen(true)}
         onOpenDrive={() => setIsDriveOpen(true)}
+        onOpenSheets={() => setIsSheetsOpen(true)}
         pendingCount={pendingCount}
       />
 
@@ -238,6 +241,11 @@ export default function App() {
         isOpen={isDriveOpen}
         onClose={() => setIsDriveOpen(false)}
         applications={applications}
+      />
+
+      <GoogleSheetsCodeModal
+        isOpen={isSheetsOpen}
+        onClose={() => setIsSheetsOpen(false)}
       />
 
     </div>
